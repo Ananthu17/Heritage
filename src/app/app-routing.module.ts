@@ -19,6 +19,7 @@ import { RegisterComponent } from "./views/auth/register/register.component";
 import { IndexComponent } from "./views/index/index.component";
 import { LandingComponent } from "./views/landing/landing.component";
 import { ProfileComponent } from "./views/profile/profile.component";
+import { TicketComponent } from "./views/admin/ticket/ticket.component";
 
 const routes: Routes = [
   // admin views
@@ -30,6 +31,7 @@ const routes: Routes = [
       { path: "settings", component: SettingsComponent },
       { path: "tables", component: TablesComponent },
       { path: "maps", component: MapsComponent },
+      { path: "tickets", component: TicketComponent },
       { path: "", redirectTo: "dashboard", pathMatch: "full" },
     ],
   },

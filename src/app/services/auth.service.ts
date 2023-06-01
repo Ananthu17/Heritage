@@ -1,27 +1,25 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
 
-  constructor(private http:HttpClient) { }
+  constructor(private http:HttpClient, private router:Router) { }
 
   login(data){
-    console.log()
-
-    this.http.post('https://d449-59-93-146-158.in.ngrok.io/login', data).subscribe(
-      (response) => {
-        // Handle the response here
-        console.log(response);
+    this.http.post('http://localhost:3000/login', data).subscribe(
+      (response:any) => {
+        localStorage.setItem("Token", response.token)
+        this.router.navigate(['/admin/dashboard'])
+        return response
       },
       (error) => {
-        // Handle any errors that occur during the subscription
         console.error(error);
       }
     );
-    // return this.http.post('https://61af-59-93-146-158.in.ngrok.io/login', data);
   }
 }
 

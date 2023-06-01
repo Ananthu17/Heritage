@@ -8,4 +8,8 @@ export class MapsComponent implements OnInit {
   constructor() {}
 
   ngOnInit(): void {}
+  showModal = false;
+  toggleModal(){
+    this.showModal = !this.showModal;
+  }
 }
