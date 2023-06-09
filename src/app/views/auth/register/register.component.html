@@ -11,18 +11,33 @@
           <hr class="mt-6 border-b-1 border-blueGray-300" />
         </div>
         <div class="flex-auto px-4 lg:px-10 py-10 pt-0">
-          <form>
+          <form method="post" #SignupForm="ngForm" (ngSubmit)="onSignup(SignupForm.value)">
             <div class="relative w-full mb-3">
               <label
                 class="block uppercase text-blueGray-600 text-xs font-bold mb-2"
                 htmlFor="grid-password"
               >
-                Name
+                User Name
               </label>
               <input
-                type="email"
+                type="text"
                 class="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
                 placeholder="Name"
+                #username="ngModel" name="username" ngModel required
+              />
+            </div>
+            <div class="relative w-full mb-3">
+              <label
+                class="block uppercase text-blueGray-600 text-xs font-bold mb-2"
+                htmlFor="grid-password"
+              >
+                Full Name
+              </label>
+              <input
+                type="text"
+                class="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
+                placeholder="Name"
+                #fullName="ngModel" name="fullName" ngModel required
               />
             </div>
 
@@ -31,13 +46,12 @@
                 class="block uppercase text-blueGray-600 text-xs font-bold mb-2"
                 htmlFor="grid-password"
               >
-                Email
+                User Type
               </label>
-              <input
-                type="email"
-                class="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
-                placeholder="Email"
-              />
+              <select #type="ngModel" name="type" ngModel required class="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150">
+                <option value="admin">Admin</option>
+                <option value="visitor">Visitor</option>
+              </select>
             </div>
 
             <div class="relative w-full mb-3">
@@ -51,15 +65,37 @@
                 type="password"
                 class="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
                 placeholder="Password"
+                #password="ngModel" name="password" ngModel required
+              />
+            </div>
+            <div class="relative w-full mb-3">
+              <label
+                class="block uppercase text-blueGray-600 text-xs font-bold mb-2"
+                htmlFor="grid-password"
+              >
+                Age
+              </label>
+              <input
+                type="number"
+                class="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
+                placeholder="Age"
+                #age="ngModel" name="age" ngModel required
               />
             </div>
 
             <div>
+              <div class="m-2 text-red-600">
+                {{warning}}
+                {{errors}}
+              </div>
+              <span></span>
               <label class="inline-flex items-center cursor-pointer">
                 <input
                   id="customCheckLogin"
                   type="checkbox"
                   class="form-checkbox border-0 text-blueGray-700 ml-1 w-5 h-5 ease-linear transition-all duration-150 rounded"
+                  (change)="updateButtonState($event.target.checked)"
+                  required
                 />
                 <span class="ml-2 text-sm font-semibold text-blueGray-600">
                   I agree with the
@@ -73,12 +109,21 @@
             <div class="text-center mt-6">
               <button
                 class="bg-blueGray-800 text-white active:bg-blueGray-600 text-sm font-bold uppercase px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 w-full ease-linear transition-all duration-150"
-                type="button"
+                type="submit"
               >
                 Create Account
               </button>
             </div>
           </form>
+        </div>
+      </div>
+      <div class="flex flex-wrap mt-6 relative">
+        <div class="w-1/2">
+        </div>
+        <div class="w-1/2 text-right">
+          <a [routerLink]="['/auth/login']" class="text-blueGray-200">
+            <small>Already a user ? Sign In</small>
+          </a>
         </div>
       </div>
     </div>

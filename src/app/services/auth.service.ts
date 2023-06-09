@@ -10,16 +10,15 @@ export class AuthService {
   constructor(private http:HttpClient, private router:Router) { }
 
   login(data){
-    this.http.post('http://localhost:3000/login', data).subscribe(
-      (response:any) => {
-        localStorage.setItem("Token", response.token)
-        this.router.navigate(['/admin/dashboard'])
-        return response
-      },
-      (error) => {
-        console.error(error);
-      }
-    );
+    return this.http.post('http://localhost:3000/login', data)
+  }
+
+  signup(data){
+    return this.http.post('http://localhost:3000/signup', data)
+  }
+
+  loggedIn(){
+    return !!localStorage.getItem('Token')
   }
 }
 

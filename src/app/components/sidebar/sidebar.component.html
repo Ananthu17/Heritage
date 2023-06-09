@@ -18,7 +18,7 @@
       class="md:block text-left md:pb-2 text-blueGray-600 mr-0 inline-block whitespace-nowrap text-sm uppercase font-bold p-4 px-0"
     >
       <span class="block sm:hidden"> Tailwind Angular </span>
-      <span class="hidden sm:block"> Notus Angular </span>
+      <span class="hidden sm:block"> Admin Panel </span>
     </a>
     <!-- User -->
     <ul class="md:hidden items-center flex flex-wrap list-none">
@@ -71,12 +71,6 @@
 
       <!-- Divider -->
       <hr class="my-4 md:min-w-full" />
-      <!-- Heading -->
-      <h6
-        class="md:min-w-full text-blueGray-500 text-xs uppercase font-bold block pt-1 pb-4 no-underline"
-      >
-        Admin Pages
-      </h6>
       <!-- Navigation -->
 
       <ul class="md:flex-col md:min-w-full flex flex-col list-none">
@@ -104,7 +98,7 @@
 
         <li class="items-center">
           <a
-            [routerLink]="['/admin/settings']"
+            [routerLink]="['/admin/heritages']"
             class="text-xs uppercase py-3 font-bold block"
             routerLinkActive
             #adminSettings="routerLinkActive"
@@ -126,7 +120,7 @@
 
         <li class="items-center">
           <a
-            [routerLink]="['/admin/tables']"
+            [routerLink]="['/admin/events']"
             class="text-xs uppercase py-3 font-bold block"
             routerLinkActive
             #adminTables="routerLinkActive"
@@ -148,7 +142,7 @@
 
         <li class="items-center">
           <a
-            [routerLink]="['/admin/maps']"
+            [routerLink]="['/admin/users']"
             class="text-xs uppercase py-3 font-bold block"
             routerLinkActive
             #adminMaps="routerLinkActive"
@@ -183,7 +177,7 @@
             <i
               class="fas fa-solid fa-file mr-2 text-sm"
               [ngClass]="
-                adminMaps.isActive ? 'opacity-75' : 'text-blueGray-300'
+                adminTicket.isActive ? 'opacity-75' : 'text-blueGray-300'
               "
             ></i>
             Tickets
